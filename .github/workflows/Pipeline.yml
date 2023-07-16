@@ -1,0 +1,13 @@
+name: Package Python Project
+on: push
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Python
+        run: python3 -m venv venv
+      - name: Activate Python Virtual Environment
+        run: source venv/bin/activate
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
