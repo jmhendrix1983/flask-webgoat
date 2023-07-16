@@ -11,3 +11,10 @@ jobs:
         run: source venv/bin/activate
       - name: Install Dependencies
         run: pip install -r requirements.txt
+      - name: Veracode SCA
+        env:
+          SRCCLR_SCM_TYPE: GITHUB
+          SRCCLR_API_TOKEN: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzgyNzkzLCJleHAiOjE2ODcxOTMzMjksImF1dGhvcml0aWVzIjoiQUdFTlQiLCJqdGkiOiJmMmYzZjEzYi0zOTU3LTQ2OTEtOTU1NS01ZmYyZThkMjc4YjYiLCJjbGllbnRfaWQiOiIiLCJzY29wZSI6W119.yuNzULhOc8PlkFqvk81YRMnRomIP_iSZYBE1TsGkR9oqjpG4IGlL6j5W276J8TA4KnduPD_qhutGcrWQ9DzKTOvawWe5cVekdiVyXDGT8TTwReIlVRNA-gKbIaeJO2Q5sjAJAq5036O4F3YHo6jB3meNq78S-BgKzezAQCAP5Ds
+          SRCCLR_SCM_TOKEN: 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
+        run: |
+          curl -sSL 'https://download.sourceclear.com/ci.sh' | bash -s – scan --update-advisor --pull-request --allow-dirty
